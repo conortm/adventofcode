@@ -65,6 +65,6 @@ func main() {
 	}
 	jolts += 3
 	diffs[3]++
-	fmt.Printf("1-jolt diffs * 3-jolt diffs: %d\n", diffs[1]*diffs)
+	fmt.Printf("1-jolt diffs * 3-jolt diffs: %d\n", diffs[1]*diffs[3])
 
 }
