@@ -37,15 +37,19 @@ func getWindowDepths(depths []int) []int {
 }
 
 func main() {
-	depths, err := utils.GetIntValsFromFile("input.txt")
+	depths, err := utils.GetIntValsFromTextFile("input.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Println("depthsCount:", len(depths))
+
 	// Part 1
+	utils.Intro("PART 1")
 	depthInreaseCount := getIncreaseCount(depths)
 	fmt.Println("depthInreaseCount:", depthInreaseCount)
+
 	// Part 2
+	utils.Intro("PART 2")
 	windowDepths := getWindowDepths(depths)
 	fmt.Println("windowDepthsCount:", len(windowDepths))
 	windowDepthIncreaseCount := getIncreaseCount(windowDepths)

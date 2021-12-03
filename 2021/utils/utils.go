@@ -3,24 +3,54 @@ package utils
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
 
-func GetIntValsFromFile(filepath string) ([]int, error) {
-	intVals := make([]int, 0)
+func Intro(label string) {
+	fmt.Println("========", label, "========")
+}
+
+func BinaryStringToInt(binaryString string) int64 {
+	i, err := strconv.ParseInt(binaryString, 2, 64)
+	if err != nil {
+		log.Panic(err)
+	}
+	return i
+}
+
+func GetLinesFromTextFile(filepath string) ([]string, error) {
+	lines := make([]string, 0)
 
 	file, err := os.Open(filepath)
 	if err != nil {
-		return intVals, err
+		return lines, err
 	}
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		text := scanner.Text()
-		if intVal, err := strconv.Atoi(text); err == nil {
+		lines = append(lines, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		return lines, err
+	}
+	return lines, nil
+}
+
+func GetIntValsFromTextFile(filepath string) ([]int, error) {
+	intVals := make([]int, 0)
+
+	lines, err := GetLinesFromTextFile(filepath)
+	if err != nil {
+		return intVals, err
+	}
+
+	for _, line := range lines {
+		if intVal, err := strconv.Atoi(line); err == nil {
 			// fmt.Println("intVal:", intVal)
 			intVals = append(intVals, intVal)
 		} else {
@@ -28,25 +58,5 @@ func GetIntValsFromFile(filepath string) ([]int, error) {
 		}
 	}
 
-	if err := scanner.Err(); err != nil {
-		return intVals, err
-	}
-
 	return intVals, nil
-}
-
-func GetLinesFromTextFile(filepath string, lines chan<- string) {
-	file, _ := os.Open(filepath)
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-
-	for scanner.Scan() {
-		lines <- scanner.Text()
-	}
-	close(lines)
-}
-
-func Intro(label string) {
-	fmt.Println("========", label, "========")
 }

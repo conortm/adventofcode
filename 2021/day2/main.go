@@ -23,9 +23,8 @@ func newCommand(text string) *command {
 
 func getCommandsFromInputFile(filename string) []*command {
 	commands := make([]*command, 0)
-	lines := make(chan string)
-	go utils.GetLinesFromTextFile(filename, lines)
-	for line := range lines {
+	lines, _ := utils.GetLinesFromTextFile(filename)
+	for _, line := range lines {
 		commands = append(commands, newCommand(line))
 	}
 	// for _, command := range commands {
@@ -77,23 +76,16 @@ func getFinalCoordinatesWithAim(commands []*command) (int, int) {
 	return horizontalPosition, depth
 }
 
-func partOne() {
+func main() {
 	utils.Intro("PART 1")
 	commands := getCommandsFromInputFile("input.txt")
 	horizontalPosition, depth := getFinalCoordinates(commands)
 	product := horizontalPosition * depth
 	fmt.Println("product:", product)
-}
 
-func partTwo() {
 	utils.Intro("PART 2")
-	commands := getCommandsFromInputFile("input.txt")
-	horizontalPosition, depth := getFinalCoordinatesWithAim(commands)
-	product := horizontalPosition * depth
+	commands = getCommandsFromInputFile("input.txt")
+	horizontalPosition, depth = getFinalCoordinatesWithAim(commands)
+	product = horizontalPosition * depth
 	fmt.Println("product:", product)
-}
-
-func main() {
-	partOne()
-	partTwo()
 }
