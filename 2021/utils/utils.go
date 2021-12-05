@@ -20,6 +20,10 @@ func BinaryStringToInt(binaryString string) int64 {
 	return i
 }
 
+func StringToInt(value string) (int, error) {
+	return strconv.Atoi(value)
+}
+
 func GetLinesFromTextFile(filepath string) ([]string, error) {
 	lines := make([]string, 0)
 
@@ -50,7 +54,7 @@ func GetIntValsFromTextFile(filepath string) ([]int, error) {
 	}
 
 	for _, line := range lines {
-		if intVal, err := strconv.Atoi(line); err == nil {
+		if intVal, err := StringToInt(line); err == nil {
 			// fmt.Println("intVal:", intVal)
 			intVals = append(intVals, intVal)
 		} else {
