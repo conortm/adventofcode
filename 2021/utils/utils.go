@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func Intro(label string) {
@@ -20,8 +21,20 @@ func BinaryStringToInt(binaryString string) int64 {
 	return i
 }
 
-func StringToInt(value string) (int, error) {
-	return strconv.Atoi(value)
+func StringToInt(s string) (int, error) {
+	return strconv.Atoi(s)
+}
+
+func StringToInts(s string, sep string) ([]int, error) {
+	intVals := make([]int, 0)
+	for _, stringVal := range strings.Split(s, sep) {
+		intVal, err := strconv.Atoi(stringVal)
+		if err != nil {
+			return intVals, err
+		}
+		intVals = append(intVals, intVal)
+	}
+	return intVals, nil
 }
 
 func GetLinesFromTextFile(filepath string) ([]string, error) {
