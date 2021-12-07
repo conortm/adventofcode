@@ -13,6 +13,13 @@ func Intro(label string) {
 	fmt.Println("========", label, "========")
 }
 
+func Abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
 func BinaryStringToInt(binaryString string) int64 {
 	i, err := strconv.ParseInt(binaryString, 2, 64)
 	if err != nil {
