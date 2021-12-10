@@ -19,5 +19,5 @@ trim_trailing_whitespace = false
 
 eclint_indent_style = unset
 
-[input.txt]
+[*.txt]
 insert_final_newline = false
