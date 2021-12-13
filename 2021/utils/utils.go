@@ -44,6 +44,15 @@ func Abs(x int) int {
 	return x
 }
 
+func Contains(s []string, str string) bool {
+	for _, v := range s {
+		if v == str {
+			return true
+		}
+	}
+	return false
+}
+
 func BinaryStringToInt(binaryString string) int64 {
 	i, err := strconv.ParseInt(binaryString, 2, 64)
 	if err != nil {
