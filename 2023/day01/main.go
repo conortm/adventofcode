@@ -55,8 +55,7 @@ func getDigit(line string, i int) int {
 
 func getFirstDigit(line string) int {
 	for i := 0; i < len(line); i++ {
-		digit := getDigit(line, i)
-		if digit > -1 {
+		if digit := getDigit(line, i); digit > -1 {
 			return digit
 		}
 	}
@@ -65,8 +64,7 @@ func getFirstDigit(line string) int {
 
 func getLastDigit(line string) int {
 	for i := len(line) - 1; i >= 0; i-- {
-		digit := getDigit(line, i)
-		if digit > -1 {
+		if digit := getDigit(line, i); digit > -1 {
 			return digit
 		}
 	}
