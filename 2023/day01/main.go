@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/conortm/aoc/utils"
+	"github.com/conortm/aoc/2023/utils"
 )
 
 func isDigit(r rune) bool {
