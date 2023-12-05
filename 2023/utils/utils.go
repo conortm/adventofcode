@@ -118,22 +118,18 @@ func GetIntValsFromTextFile(filepath string) ([]int, error) {
 	return intVals, nil
 }
 
-func GetTwoDArrayFromTextFile(filepath string) ([][]int, error) {
+func GetTwoDArrayFromTextFile(filepath string) ([][]string, error) {
 	lines, err := GetLinesFromTextFile(filepath)
 	if err != nil {
 		return nil, err
 	}
 
-	twoD := make([][]int, len(lines))
+	twoDArray := make([][]string, len(lines))
 	for i, line := range lines {
-		twoD[i] = make([]int, len(line))
+		twoDArray[i] = make([]string, len(line))
 		for j, c := range line {
-			intVal, err := StringToInt(string(c))
-			if err != nil {
-				return twoD, err
-			}
-			twoD[i][j] = intVal
+			twoDArray[i][j] = string(c)
 		}
 	}
-	return twoD, nil
+	return twoDArray, nil
 }
