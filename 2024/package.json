@@ -9,6 +9,8 @@
   "scripts": {
     "day01": "npx ts-node src/day01.ts",
     "day02": "npx ts-node src/day02.ts",
+    "day03": "npx ts-node src/day03.ts",
+    "day04": "npx ts-node src/day04.ts",
     "test": "jest --detectOpenHandles --coverage --verbose",
     "watch-test": "npm run test -- --watchAll"
   }

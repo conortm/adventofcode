@@ -1,10 +1,10 @@
 import { readFileSync } from 'fs';
 
-export function getDataFromFile(path: string) {
+export function getDataFromFile(path: string): string {
     return readFileSync(path, 'utf8');
 }
 
-export function getLinesFromFile(path: string) {
+export function getLinesFromFile(path: string): string[] {
     const data = getDataFromFile(path);
     return data.split('\n');
 }
