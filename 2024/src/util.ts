@@ -5,6 +5,14 @@ export function getDataFromFile(path: string) {
 }
 
 export function getLinesFromFile(path: string) {
-    const data = getDataFromFile(path)
-    return data.split('\n')
+    const data = getDataFromFile(path);
+    return data.split('\n');
+}
+
+export function getNumberArrayFromString(s: string, separator: string = ' ') {
+    const numberArray: number[] = [];
+    s.split(separator).forEach((val) => {
+        numberArray.push(+val)
+    });
+    return numberArray;
 }

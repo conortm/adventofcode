@@ -1,10 +1,15 @@
 {
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.10.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
     "typescript": "^5.7.2"
   },
   "scripts": {
     "day01": "npx ts-node src/day01.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "day02": "npx ts-node src/day02.ts",
+    "test": "jest --detectOpenHandles --coverage --verbose",
+    "watch-test": "npm run test -- --watchAll"
   }
 }
